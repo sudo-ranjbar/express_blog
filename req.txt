@@ -1,0 +1,9 @@
+npm i -S express mysql2 body-parser express-session
+
+npm i -S dotenv
+
+npm i -S nodemon
+
+https://github.com/ericf/express-handlebars
+npm i -S express-handlebars
+
