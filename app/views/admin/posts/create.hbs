@@ -8,8 +8,8 @@
                 <div class="row mbn-20">
                     <form action="/admin/posts/store" class="col-lg-6 col-12" method="post">
                         <div class=" mb-20">
-                            {{#if error_message}}
-                            {{#each error_message}}
+                            {{#if errorResult}}
+                            {{#each errorResult}}
                             <div class="alert alert-danger" role="alert">
                                 {{this}}
                             </div>

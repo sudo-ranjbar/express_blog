@@ -4,6 +4,8 @@ const userModel = require('@models/userModel')
 
 const { toPersianDate } = require('@services/dateService')
 
+const postValidator = require('@validators/createPostValidator')
+
 exports.index = async (req, res) => {
 
     const posts = await postsModel.getAll();
@@ -25,7 +27,9 @@ exports.create = async (req, res) => {
 }
 
 // store to db
-let error_message = []
+
+// TODO use proper validation with SESSIONS
+// errors must be stored in a session and then injected to the create view
 
 exports.store = async (req, res) => {
 
@@ -37,21 +41,15 @@ exports.store = async (req, res) => {
         status: req.body.status,
     }
 
-    // if (0 == formData.author_id) {
+    const errorResult = postValidator.createValidator(formData)
 
-    //     const authorError = 'نویسنده ای انتخاب نشد!'
+    if (errorResult.length > 0) {
+        const users = await userModel.getAllUsers(['id', 'name']);
+        res.render('admin/posts/create', { layout: 'admin', users, errorResult })
+    }else {
+        const result = await postsModel.createPost(formData)
+    }
 
-    //     // if error_message.
-        
-    //     error_message = [...error_message, authorError]
-        
-    //     res.send({ layout: 'admin', error_message })
+    
 
-    //     return
-        
-    // }
-
-    const result = await postsModel.createPost(formData)
-
-    res.send(req.body)
 }

@@ -17,7 +17,8 @@
 		"@controllers": "app/controllers",
 		"@routes": "app/routes",
 		"@services": "app/services",
-		"@database": "database"
+		"@database": "database",
+		"@validators": "app/validators"
 	},
 	"dependencies": {
 		"body-parser": "^2.2.0",
