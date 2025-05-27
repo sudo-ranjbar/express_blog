@@ -1,23 +1,33 @@
 {
-  "name": "express_blog",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx nodemon server.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "dependencies": {
-    "body-parser": "^2.2.0",
-    "dotenv": "^16.5.0",
-    "express": "^5.1.0",
-    "express-handlebars": "^8.0.1",
-    "express-session": "^1.18.1",
-    "mysql2": "^3.14.1",
-    "nodemon": "^3.1.10"
-  }
+	"name": "express_blog",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "npx nodemon server.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "commonjs",
+	"_moduleAliases": {
+		"@root": ".",
+		"@models": "app/models",
+		"@controllers": "app/controllers",
+		"@routes": "app/routes",
+		"@services": "app/services",
+		"@database": "database"
+	},
+	"dependencies": {
+		"body-parser": "^2.2.0",
+		"dotenv": "^16.5.0",
+		"express": "^5.1.0",
+		"express-handlebars": "^8.0.1",
+		"express-session": "^1.18.1",
+		"jalali-moment": "^3.3.11",
+		"module-alias": "^2.2.3",
+		"mysql2": "^3.14.1",
+		"nodemon": "^3.1.10"
+	}
 }
