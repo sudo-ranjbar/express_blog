@@ -45,11 +45,46 @@ exports.store = async (req, res) => {
 
     if (errorResult.length > 0) {
         const users = await userModel.getAllUsers(['id', 'name']);
-        res.render('admin/posts/create', { layout: 'admin', users, errorResult })
-    }else {
-        const result = await postsModel.createPost(formData)
+        return res.render('admin/posts/create', { layout: 'admin', users, errorResult })
+    }
+    
+    const result = await postsModel.createPost(formData)
+    if (result.insertId) {
+        res.redirect('/admin/posts')
     }
 
-    
+}
 
+exports.remove = async (req, res) => {
+
+    const postID = req.params.postID
+
+    if (parseInt(postID) === 0) {
+        res.redirect('/admin/posts')
+    }
+
+    const result = await postsModel.delete(postID)
+
+    if(result) {
+        res.redirect('/admin/posts');
+    }
+}
+
+
+exports.edit = async (req, res) => {
+
+    const postID = req.params.postID
+
+    if (parseInt(postID) === 0) {
+        res.redirect('/admin/posts')
+    }
+
+    const post = await postsModel.getPost(postID)
+
+    if (post) {
+
+        const users = await userModel.getAllUsers(['id', 'name']);
+
+        res.render('admin/posts/edit', { layout: 'admin', users, post });
+    }
 }

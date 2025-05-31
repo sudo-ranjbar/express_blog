@@ -21,14 +21,17 @@
                     <tbody class="table-light">
                         {{#each posts}}
                             <tr>
-                                <td></td>
+                                <td>{{this.id}}</td>
                                 <td>
                                     <a href="#">{{this.title}}</a>
                                 </td>
                                 <td>{{this.name}}</td>
                                 <td>{{this.shamsi_c_at}}</td>
                                 <td>{{this.views}}</td>
-                                <td>/</td>
+                                <td>
+                                    <a href="posts/delete/{{this.id}}" class="ml-2">حذف</a>
+                                    <a href="posts/edit/{{this.id}}">ویرایش</a>
+                                </td>
                             </tr>
                         {{/each}}
                     </tbody>
