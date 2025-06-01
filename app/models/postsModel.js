@@ -39,7 +39,14 @@ exports.delete = async (postID) => {
 
 exports.edit = async (postID) => {
 
-    const [result] = await db.query(`DELETE FROM posts WHERE id=?`, [postID]);
+    const [result] = await db.query(`DELETE FROM posts WHERE id=? LIMIT 1`, [postID]);
+
+    return result.affectedRows > 0;
+}
+
+exports.update = async (postID, updateFields) => {
+    
+    const [result] = await db.query(`UPDATE posts SET ? WHERE id=? LIMIT 1`, [updateFields, postID]);
 
     return result.affectedRows > 0;
 }

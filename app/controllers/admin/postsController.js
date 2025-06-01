@@ -88,3 +88,25 @@ exports.edit = async (req, res) => {
         res.render('admin/posts/edit', { layout: 'admin', users, post });
     }
 }
+
+exports.update = async (req, res) => {
+
+    const postID = req.params.postID
+
+    if (parseInt(postID) === 0) {
+        res.redirect('/admin/posts')
+    }
+
+    const formData = {
+        author_id: req.body.author_id,
+        title: req.body.title,
+        slug: req.body.slug,
+        content: req.body.content,
+        status: req.body.status,
+    }
+
+    const result = await postsModel.update(postID, formData);
+
+    return res.redirect('/admin/posts');
+
+}

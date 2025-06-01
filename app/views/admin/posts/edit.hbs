@@ -6,7 +6,7 @@
             </div>
             <div class="box-body">
                 <div class="row mbn-20">
-                    <form action="/admin/posts/update" class="col-lg-6 col-12" method="post">
+                    <form action="/admin/posts/update/{{post.id}}" class="col-lg-6 col-12" method="post">
                         <div class=" mb-20">
                             {{#if errorResult}}
                             {{#each errorResult}}
@@ -17,10 +17,12 @@
                             {{/if}}
                             <div class="row mbn-15">
                                 <div class="col-12 mb-30">
-                                    <input name="title" type="text" placeholder="عنوان مطلب" class="w-50" value="{{post.title}}">
+                                    <input name="title" type="text" placeholder="عنوان مطلب" class="w-50"
+                                        value="{{post.title}}">
                                 </div>
                                 <div class="col-12 mb-30">
-                                    <input name="slug" type="text" placeholder="نامک مطلب" class="w-50" value="{{post.slug}}">
+                                    <input name="slug" type="text" placeholder="نامک مطلب" class="w-50"
+                                        value="{{post.slug}}">
                                 </div>
                                 <div class="col-12 mb-30">
                                     <textarea name="content" type="text" placeholder="محتوی مطلب" class="w-100"
@@ -30,7 +32,9 @@
                                     <select name="author_id" class="form-controll w-25">
                                         <option value="0">نویسنده‌ها</option>
                                         {{#each users}}
-                                        <option value={{this.id}} {{}}>{{this.name}}</option>
+                                        <option value={{this.id}}>
+                                            {{this.name}}
+                                        </option>
                                         {{/each}}
                                     </select>
                                 </div>

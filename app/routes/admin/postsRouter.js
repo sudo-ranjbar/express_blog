@@ -5,9 +5,10 @@ const router = express.Router();
 const postController = require("../../controllers/admin/postsController")
 
 router.get("/", postController.index)
-router.get("/create", postController.create)
-router.post('/store', postController.store)
-router.get('/delete/:postID', postController.remove)
-router.get('/edit/:postID', postController.edit)
+router.get("/create", postController.create) // create page
+router.post('/store', postController.store) // create action
+router.get('/delete/:postID', postController.remove) // delete action
+router.get('/edit/:postID', postController.edit) // edit page
+router.post('/update/:postID', postController.update) // edit action
 
 module.exports = router
