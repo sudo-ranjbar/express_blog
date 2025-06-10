@@ -1,0 +1,53 @@
+<!--Responsive Table Start-->
+<div class="col-12 mb-30">
+    <div class="box">
+        <div class="box-head">
+            <h4 class="title">لیست دیدگاه ها</h4>
+        </div>
+        <div class="box-body">
+            <div class="table-responsive ">
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>نویسنده</th>
+                            <th>دیدگاه</th>
+                            <th>در پاسخ‌به</th>
+                            <th>تاریخ ارسال</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-light">
+                        {{#each comments}}
+                        <tr>
+                            <td class="d-flex align-items-center">
+                                <div style="width: 50px; height: 50px;" class="ml-3">
+                                    <img src="/assets/images/avatar/avatar-2.jpg" class="img-fluid rounded-circle"
+                                        alt="">
+                                </div>
+                                {{this.user_name}}
+                            </td>
+                            <td>
+                                <a href="#">
+                                    {{this.comment}}
+                                </a>
+
+                            </td>
+                            <td>{{this.title}}</td>
+                            <td>{{this.shamsi_c_at}}</td>
+                            <td>
+                                <a href="posts/delete/{{this.id}}" class="ml-2 badge badge-success "
+                                    style="padding: 10px;">تایید</a>
+                                <a href="posts/edit/{{this.id}}" class="ml-2 badge badge-warning "
+                                    style="padding: 10px;">رد</a>
+                                <a href="posts/edit/{{this.id}}" class="badge badge-danger "
+                                    style="padding: 10px;">حذف</a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Responsive Table End-->

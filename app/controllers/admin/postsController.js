@@ -1,6 +1,6 @@
 const postsModel = require("@models/postsModel");
 
-const userModel = require('@models/userModel')
+const usersModel = require('@models/usersModel')
 
 const { toPersianDate } = require('@services/dateService')
 
@@ -21,13 +21,12 @@ exports.index = async (req, res) => {
 // create form
 exports.create = async (req, res) => {
 
-    const users = await userModel.getAllUsers(['id', 'name']);
+    const users = await usersModel.getAllUsers(['id', 'name']);
     
     res.render('admin/posts/create', {layout: 'admin', users})
 }
 
 // store to db
-
 // TODO use proper validation with SESSIONS
 // errors must be stored in a session and then injected to the create view
 
@@ -44,7 +43,7 @@ exports.store = async (req, res) => {
     const errorResult = postValidator.createValidator(formData)
 
     if (errorResult.length > 0) {
-        const users = await userModel.getAllUsers(['id', 'name']);
+        const users = await usersModel.getAllUsers(['id', 'name']);
         return res.render('admin/posts/create', { layout: 'admin', users, errorResult })
     }
     
@@ -83,7 +82,7 @@ exports.edit = async (req, res) => {
 
     if (post) {
 
-        const users = await userModel.getAllUsers(['id', 'name']);
+        const users = await usersModel.getAllUsers(['id', 'name']);
 
         res.render('admin/posts/edit', { layout: 'admin', users, post });
     }
