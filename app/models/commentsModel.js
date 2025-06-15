@@ -3,16 +3,16 @@ const db = require("@database/mysql")
 exports.getAll = async () => {
 
     const [rows, fields] = await db.query(`
-            SELECT p.*,u.name
-            FROM posts p
-            JOIN users u ON p.author_id=u.id
-            ORDER BY p.created_at DESC
+            SELECT c.*, p.title
+            FROM comments c
+            JOIN posts p ON c.post_id=p.id
+            ORDER BY c.created_at DESC
     `);
 
     return rows;
 }
 
-exports.getPost = async (postID) => {
+exports.getComment = async (postID) => {
 
     const [rows, fields] = await db.query(`
             SELECT p.*,u.name
@@ -24,12 +24,6 @@ exports.getPost = async (postID) => {
     return rows.length > 0 ? rows[0] : false;
 }
 
-exports.createPost = async (formData) => {
-    const [result] = await db.query(`INSERT INTO posts SET ?`, [formData]);
-    
-    return result
-}
-
 exports.delete = async (postID) => {
 
     const [result] = await db.query(`DELETE FROM posts WHERE id=? LIMIT 1`, [postID]);
@@ -38,7 +32,7 @@ exports.delete = async (postID) => {
 }
 
 exports.update = async (postID, updateFields) => {
-    
+
     const [result] = await db.query(`UPDATE posts SET ? WHERE id=? LIMIT 1`, [updateFields, postID]);
 
     return result.affectedRows > 0;
