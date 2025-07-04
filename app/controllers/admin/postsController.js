@@ -84,7 +84,11 @@ exports.edit = async (req, res) => {
 
         const users = await usersModel.getAllUsers(['id', 'name']);
 
-        res.render('admin/posts/edit', { layout: 'admin', users, post });
+        res.render('admin/posts/edit', { layout: 'admin', users, post , helper: {
+            isPostAuthor: function(userID, options){
+                return post.author_id === userID ? options.fn(this) : options.inverse(this);
+            }
+        } });
     }
 }
 

@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 // routers
-const postsRouter = require("./postsRouter")
 const dashboardRouter = require("./dashboardRouter")
+const postsRouter = require("./postsRouter")
 const commentsRouter = require("./commentsRouter")
 
 router.use("/dashboard", dashboardRouter)

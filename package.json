@@ -26,6 +26,7 @@
 		"express": "^5.1.0",
 		"express-handlebars": "^8.0.1",
 		"express-session": "^1.18.1",
+		"gravatar": "^1.8.2",
 		"jalali-moment": "^3.3.11",
 		"module-alias": "^2.2.3",
 		"mysql2": "^3.14.1",

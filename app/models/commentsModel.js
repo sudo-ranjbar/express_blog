@@ -12,7 +12,7 @@ exports.getAll = async () => {
     return rows;
 }
 
-exports.getComment = async (postID) => {
+exports.get = async (postID) => {
 
     const [rows, fields] = await db.query(`
             SELECT p.*,u.name
