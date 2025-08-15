@@ -1,5 +1,5 @@
 const adminRouter = require("./admin");
 
-module.exports = app => {
+module.exports = (app) => {
     app.use("/admin", adminRouter)
 }
